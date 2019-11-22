@@ -12,9 +12,7 @@
 		<form>
 			<label>Wybierz miasto</label>			
 			<select id="city" name="city">
-				<!--
-					<option value=""></option>
-				-->
+				<option value=""></option>	
 				<option value="Gdansk">Gdańsk</option>
 				<option value="Krakow">Kraków</option>
 				<option value="Lublin">Lublin</option>
@@ -26,7 +24,12 @@
 				<option value="Warsaw">Warszawa</option>
 				<option value="Wroclaw">Wrocław</option>
 			</select>
-			<input id="submit" type="submit" value="Sprawdź pogodę i atrakcje">
+			<button id="submit">Sprawdź pogodę i atrakcje</button>
 		</form>
+​
+		<div id="weather">
+			<div id="description"></div>
+			<div id="temp"></div>
+		</div>
 	</body>
 </html>
