@@ -2,7 +2,7 @@ export default class WeatherDataSource {
     constructor() {
         this.apiKey = '84af29f03ef35bb4dd7f1e9b0ad575e2';
     }  
-    getweather(city) { 
+    getWeather(city) { 
         fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + this.apiKey)  
             .then(function(resp) { 
                 return resp.json() })
@@ -22,7 +22,7 @@ var weather = new WeatherDataSource();
 input.addEventListener('click', function(e) {
     e.preventDefault();
     city = document.querySelector("#city").value;
-    weather.getweather(city);
+    weather.getWeather(city);
 });
 
 //additional function, only for testing
