@@ -8,7 +8,8 @@ export default class WeatherDataSource {
                 return resp.json() })
             .then(function(data) {
                 console.log(data);
-                showWeather(data);
+                //showWeather(data);
+                return data;
             })
             .catch(function(err) {
                 console.log(err);
@@ -24,19 +25,19 @@ input.addEventListener('click', function(e) {
     weather.getweather(city);
 });
 
-//dodatkowa funkcja związana z pokazywaniem informacji na stronie
-function showWeather(data) {
-    var celcius = Math.round(parseFloat(data.main.temp)-273.15);
-    var description = data.weather[0].description;
+//additional function, only for testing
+// function showWeather(data) {
+//     var celcius = Math.round(parseFloat(data.main.temp)-273.15);
+//     var description = data.weather[0].description;
     
-    if( description.indexOf('rain') > 0 ) {
-        document.body.className = 'rainy';
-    } else if( description.indexOf('cloud') > 0 ) {
-        document.body.className = 'cloudy';
-    } else if( description.indexOf('sunny') > 0 ) {
-        document.body.className = 'sunny';
-    }
+//     if( description.indexOf('rain') > 0 ) {
+//         document.body.className = 'rainy';
+//     } else if( description.indexOf('cloud') > 0 ) {
+//         document.body.className = 'cloudy';
+//     } else if( description.indexOf('sunny') > 0 ) {
+//         document.body.className = 'sunny';
+//     }
     
-    document.getElementById('description').innerHTML = description;
-    document.getElementById('temp').innerHTML = celcius + '&deg;';
-}
+//     document.getElementById('description').innerHTML = description;
+//     document.getElementById('temp').innerHTML = celcius + '&deg;';
+// }
