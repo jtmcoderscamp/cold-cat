@@ -7,6 +7,8 @@ export default class WeatherData {
         let sunrise = WeatherData.unixToDate(data.sys.sunrise);
         let sunset = WeatherData.unixToDate(data.sys.sunset);
         let humidity = data.main.humidity;
+        let clouds = data.clouds.all;
+        let main = data.weather[0].main;
     
     }
 
