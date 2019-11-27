@@ -8,8 +8,7 @@ export default class WeatherDataSource {
                 return resp.json() })
             .then(function(data) {
                 console.log(data);
-                //showWeather(data);
-                return data;
+                return new WeatherData(data);
             })
             .catch(function(err) {
                 console.log(err);
@@ -24,20 +23,3 @@ input.addEventListener('click', function(e) {
     city = document.querySelector("#city").value;
     weather.getWeather(city);
 });
-
-//additional function, only for testing
-// function showWeather(data) {
-//     var celcius = Math.round(parseFloat(data.main.temp)-273.15);
-//     var description = data.weather[0].description;
-    
-//     if( description.indexOf('rain') > 0 ) {
-//         document.body.className = 'rainy';
-//     } else if( description.indexOf('cloud') > 0 ) {
-//         document.body.className = 'cloudy';
-//     } else if( description.indexOf('sunny') > 0 ) {
-//         document.body.className = 'sunny';
-//     }
-    
-//     document.getElementById('description').innerHTML = description;
-//     document.getElementById('temp').innerHTML = celcius + '&deg;';
-// }
