@@ -9,7 +9,7 @@ export default class weatherDisplay {
         weatherDisplay.displayVariable(output, "temperature", weatherData.temperature);
         weatherDisplay.displayVariable(output, "humidity", weatherData.humidity);
         weatherDisplay.displayVariable(output, "clouds", weatherData.clouds);
-        weatherDisplay.displayVariable(output, "chance to rain",weatherData.rain);
+        //weatherDisplay.displayVariable(output, "chance to rain",weatherData.rain);
         weatherDisplay.displayVariable(output, "wind", weatherData.wind);
     }
 
