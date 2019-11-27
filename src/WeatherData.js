@@ -2,7 +2,7 @@ export default class WeatherData {
 
     constructor(data)
     {
-        
+        console.log(data);
         let temp = Math.round((data.main.temp-273.15)*10)/10;
         let sunrise = WeatherData.unixToDate(data.sys.sunrise);
         let sunset = WeatherData.unixToDate(data.sys.sunset);
