@@ -7,23 +7,23 @@ export default class WeatherDataSource {
             .then(function(resp) { 
                 return resp.json() })
             .then(function(data) {
-                console.log(data);
+                //console.log(data);
                 return new WeatherData(data);
             })
             .catch(function(err) {
-                console.log(err);
+                //console.log(err);
             });
         return weatherDataPromise 
     }
     getForecast(city) { 
-        const forecastDataPromise = fetch('https://api.openweathermap.org/data/2.5/forecast/hourly?q=' + city + '&units=metric&lang=pl&appid=' + this.apiKey)  
+        const forecastDataPromise = fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=metric&lang=pl&appid=' + this.apiKey)  
             .then(function(resp) { 
                 return resp.json() })
             .then(function(data) {
-                console.log(data);
+                //console.log(data);
             })
             .catch(function(err) {
-                console.log(err);
+                //console.log(err);
             });
         return forecastDataPromise 
     }
