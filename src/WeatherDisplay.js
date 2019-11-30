@@ -1,29 +1,50 @@
 import WeatherData from "./WeatherData";
+import "./forecastStyle.css";
+
 
 export default class weatherDisplay {
 
-    static displayWeather(day, weatherData)
-    {
-
-        let output = document.getElementById(day);
-        weatherDisplay.displayVariable(output, "temperature", weatherData.temperature);
-        weatherDisplay.displayVariable(output, "humidity", weatherData.humidity);
-        weatherDisplay.displayVariable(output, "clouds", weatherData.clouds);
-        //weatherDisplay.displayVariable(output, "chance to rain",weatherData.rain);
-        weatherDisplay.displayVariable(output, "wind", weatherData.wind);
+    constructor(){
+        this.container=document.getElementById('forecast');
+        this.container.className="weatherContainer"
+        this.counter=0;
+        this.today= new Date().toLocaleDateString().substr(0,2);
     }
 
-    static displayVariable (output, variableName, value) 
+    displayWeather(weatherData)
     {
-        var textArea = document.createElement("textarea");
-        textArea.style.border= '1px solid gray'
-        textArea.style.width='20vw';
-        textArea.style.height='10vh';
-        textArea.style.resize = 'none';
-        textArea.setAttribute ( 'disabled', true);
-        textArea.innerText=variableName + ": " + value;
-        output.appendChild(textArea);
+        let day=weatherData.dateWithTime.substring(8,10)
+        if(day!=this.today && this.counter<32){
+            this.counter++;
+            if(weatherData.time == "01:00")
+                this.appendTitle(weatherData.dateWithTime);
+            this.displayElement(weatherData);
+        }
     }
+
+    displayElement (element) 
+    {
+        const output = document.createElement("div");
+        const imgSrc = `http://openweathermap.org/img/wn/${element.weatherIcon}@2x.png`;
+        output.className = 'currentWeather';
+        const hour=element.dateWithTime.substring(12,17);
+        output.innerHTML=
+        `<div class=time>${hour}</div>  
+        <div class=icon><img src=${imgSrc} alt="weather icon"></div>
+        <div class=temperature>${element.temp}C</div>`;
+
+        this.container.appendChild(output);
+    }
+
+    appendTitle (dateWithTime){
+        const output = document.createElement("div");
+        const day = dateWithTime.substr(0,10);
+        output.className = "rowName";
+        output.innerHTML=`${day}`;
+        this.container.appendChild(output);
+    }
+
+
    
 
 }
