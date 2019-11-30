@@ -1,13 +1,19 @@
 import weatherDisplay from "./WeatherDisplay";
 import WeatherData from './WeatherData';
 
+//class used to display 4days forecast
+//to use it first declare API 
+//pass api reference and id of container in which you want to display forecast
+//to display forecast call function display(city) and pass name of the city as a string
+
 export default class ForecastDisplay{
-    constructor(data){
-        this.forecast=ForecastDisplay.mapData(data);
-        };
+    constructor(api, containerId){
+        this.api=api;
+        this.containerId=containerId;
+        }
     
 
-    static mapData(data){
+    mapData(data){
         let fore = new Array();
         fore = data.list.map(function(x) {
             let res = new WeatherData(x); 
@@ -20,23 +26,13 @@ export default class ForecastDisplay{
     }
 
 
-    display(){
-        let wd = new weatherDisplay();
-        this.forecast.forEach(element => {
+    async display(city){
+        let data = await this.api.getForecast(city);
+        let wd = new weatherDisplay(this.containerId);
+        let forecast = this.mapData(data);
+        forecast.forEach(element => {
             wd.displayWeather(element);
         });
     }
 
 }
-
- /*dziala w indexie xD
- w();
- async function w () {
-    let wf;
-    wf = await api.getForecast('Wrocław');
-    
-    let fd =  new ForecastDisplay(wf);
-    
-    fd.display();    
-}
- */

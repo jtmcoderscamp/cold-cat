@@ -1,11 +1,13 @@
-import WeatherData from "./WeatherData";
 import "./forecastStyle.css";
+import weatherData from "./WeatherData.js"
 
+//this is a class used to display one weatherData element at a time
+//its objects are supposed to be made and used in ForecastDisplay objects
 
 export default class weatherDisplay {
 
-    constructor(){
-        this.container=document.getElementById('forecast');
+    constructor(containerId){
+        this.container=document.getElementById(containerId);
         this.container.className="weatherContainer"
         this.counter=0;
         this.today= new Date().toLocaleDateString().substr(0,2);
