@@ -22,7 +22,6 @@ export default class Details {
   }
 
   render(currentWeather, weatherForecast) {
-    console.log("render", currentWeather, weatherForecast);
     this.container.innerHTML = `
       <div>
         <div class="current">

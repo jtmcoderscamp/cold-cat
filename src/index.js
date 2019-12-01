@@ -1,6 +1,7 @@
 import "./styles.css";
 import Details from "./details";
 import WeatherDataSource from "./weatherDataSource";
+import ForecastDisplay from "./ForecastDisplay";
 
 class WeatherApp {
   constructor(container) {
@@ -8,6 +9,7 @@ class WeatherApp {
     this.city = "";
     this.weatherData = null;
     this.dataSource = new WeatherDataSource();
+    this.fd = null;
   }
   init() {
     this.container.innerHTML = `
@@ -29,7 +31,8 @@ class WeatherApp {
           </select>
           <button id="submit">Sprawdź pogodę i atrakcje</button>
         </form>
-        <div id="details" />
+        <div id="details"></div>
+        <div id="forecast"></div>
       </div>
     `;
 
@@ -38,6 +41,8 @@ class WeatherApp {
       this.weatherData = await this.dataSource.getWeather(this.city);
       this.forecastData = await this.dataSource.getForecast(this.city);
       this.details.render(this.weatherData, this.forecastData);
+
+      this.fd.display(this.city);
     };
 
     this.container
@@ -48,6 +53,10 @@ class WeatherApp {
       .querySelector("#submit")
       .addEventListener("click", loadNewWeatherData);
 
+    this.fd = new ForecastDisplay(
+      this.dataSource,
+      this.container.querySelector("#forecast")
+    );
     this.details = new Details(this.container.querySelector("#details"));
   }
 }
