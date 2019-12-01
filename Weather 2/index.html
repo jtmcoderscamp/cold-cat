@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible"
+    content="ie=edhe">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+      <div class="WroAttractivePlaces">
+            <div class="wrap">
+                    <div id="arrow-left" class="arrow"></div>
+                    <div id="slider">
+                      <div class="slide slide1">
+                        <div class="slide-content">
+                            <a href="https://hydropolis.pl/?gclid=EAIaIQobChMImov7kaOV5gIVD4GyCh2PmgKuEAAYASAAEgLVwPD_BwE" target="_blank" style="text-decoration:none" class="link">
+                          <span>Hydropolis</span>
+                            </a>
+                          <p class="caption">Hydropolis to miejsce, w którym różnorodne technologie multimedialne, interaktywne instalacje, wierne repliki i modele oraz bogate w informacje ekrany dotykowe służą jednemu celowi: ukazaniu wody z różnych, fascynujących perspektyw.</p>
+                        </div>
+                      </div>
+                      <div class="slide slide2">
+                        <div class="slide-content">
+                          <a href="https://visitwroclaw.eu/miejsce/afrykarium-wroclaw" target="_blank" style="text-decoration:none" class="link">
+                          <span>Afrykarium</span>
+                          </a>
+                          <p class="caption">Oddane do użytku w październiku 2014 roku Afrykarium jest wyjątkowym projektem, jakiego w Polsce jeszcze nie było. W ogromnym gmachu powstało nowoczesne oceanarium, w którym podziwiać można wodne zwierzęta z całej Afryki.</p>
+                        </div>
+                      </div>
+                      <div class="slide slide3">
+                        <div class="slide-content">
+                          <a href="https://visitwroclaw.eu/miejsce/ostrow-tumski"target="_blank" style="text-decoration:none" class="link">
+                          
+                          <span>Ostrów Tumski</span>
+                          </a>
+                          <p class="caption">Ponad tysiąc lat temu Ostrów był wyspą u ujścia Oławy do Odry. Najstarsze odkryte ślady osadnictwa pochodzą z X wieku. Wtedy nad Odrą powstał drewniany gród, który z czasem się rozrastał. W XI i XII wieku na Ostrowie pojawiły się pierwsze kamiennie i murowane budowle.. Jeszcze w XIII wieku ówcześni piastowscy władcy Wrocławia rozbudowywali zamek. Monumentalna budowla stała w rejonie dzisiejszej ulicy św. Marcina. Ich pozostałością jest gotycki kościół św. Marcina, pełnił on rolę wewnątrz zamkowej kaplicy.</p>
+                        </div>
+                      </div>
+                    <div id="arrow-right" class="arrow"></div>
+                  <div class="slide slide4">
+                    <div class="slide-content">
+                      <a href="https://www.wroclaw.pl/rynek;" target="_blank" style="text-decoration:none" class="link">
+                          <span>Rynek</span>
+                      </a>
+                          <p class="caption">Rynek to średniowieczny plac targowy we Wrocławiu, obecnie centralna część strefy pieszej. Jeden z największych rynków staromiejskich Europy, z największymi ratuszami w Polsce.</p>
+                        </div>
+                      </div>
+                    </div>
+    </div>
+<script>
+let sliderImages = document.querySelectorAll(".slide"),
+  arrowLeft = document.querySelector("#arrow-left"),
+  arrowRight = document.querySelector("#arrow-right"),
+  current = 0;
+
+// Clear all images
+function reset() {
+  for (let i = 0; i < sliderImages.length; i++) {
+    sliderImages[i].style.display = "none";
+  }
+}
+
+// Init slider
+function startSlide() {
+  reset();
+  sliderImages[0].style.display = "block";
+}
+
+// Show prev
+function slideLeft() {
+  reset();
+  sliderImages[current - 1].style.display = "block";
+  current--;
+}
+
+// Show next
+function slideRight() {
+  reset();
+  sliderImages[current + 1].style.display = "block";
+  current++;
+}
+
+// Left arrow click
+arrowLeft.addEventListener("click", function() {
+  if (current === 0) {
+    current = sliderImages.length;
+  }
+  slideLeft();
+});
+
+// Right arrow click
+arrowRight.addEventListener("click", function() {
+  if (current === sliderImages.length - 1) {
+    current = -1;
+  }
+  slideRight();
+});
+
+startSlide();
+
+</script>
+    </body>
+    </html>
