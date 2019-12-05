@@ -1,4 +1,5 @@
 import weatherDisplay from "./WeatherDisplay";
+import WeatherData from "./WeatherData";
 
 //class used to display 4days forecast
 //to use it first declare API
@@ -6,15 +7,15 @@ import weatherDisplay from "./WeatherDisplay";
 //to display forecast call function display(city) and pass name of the city as a string
 
 export default class ForecastDisplay {
-  constructor(api, container) {
+  constructor(api, containerId) {
     this.api = api;
-    this.container = container;
+    this.containerId = containerId;
   }
 
   async display(city) {
-    const forecast = await this.api.getForecast(city);
-    const wd = new weatherDisplay(this.container);
-    forecast.forEach(element => {
+    let data = await this.api.getForecast(city);
+    let wd = new weatherDisplay(this.containerId);
+    data.forEach(element => {
       wd.displayWeather(element);
     });
   }

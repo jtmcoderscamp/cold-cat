@@ -2,6 +2,7 @@ import "./styles.css";
 import Details from "./details";
 import WeatherDataSource from "./weatherDataSource";
 import ForecastDisplay from "./ForecastDisplay";
+import CityInfo from "./CityInfo";
 
 class WeatherApp {
   constructor(container) {
@@ -33,16 +34,16 @@ class WeatherApp {
         </form>
         <div id="details"></div>
         <div id="forecast"></div>
+        <div id="city-info"></div>
       </div>
     `;
 
     const loadNewWeatherData = async e => {
       e.preventDefault();
       this.weatherData = await this.dataSource.getWeather(this.city);
-      this.forecastData = await this.dataSource.getForecast(this.city);
-      this.details.render(this.weatherData, this.forecastData);
-
+      this.details.render(this.weatherData);
       this.fd.display(this.city);
+      this.cityInfo.render(this.city);
     };
 
     this.container
@@ -58,6 +59,7 @@ class WeatherApp {
       this.container.querySelector("#forecast")
     );
     this.details = new Details(this.container.querySelector("#details"));
+    this.cityInfo = new CityInfo(this.container.querySelector("#city-info"));
   }
 }
 
