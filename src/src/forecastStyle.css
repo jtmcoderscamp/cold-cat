@@ -1,0 +1,48 @@
+.root{
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+}
+.weatherContainer{
+    display: flex;
+    flex-wrap:wrap;
+    width: 80vw;
+    margin: 0 auto;
+}
+
+.currentWeather{
+    width:12%;
+    border-top: 1px solid #ccc;
+    padding-top: 15px;
+    margin: 1vh 0;
+    justify-content: center;
+}
+
+.time, 
+.temperature,
+.icon{
+    display: flex;
+    justify-content: center;
+}
+.icon img{
+    max-height: 80px;
+}
+
+.rowName{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 5vw 0 1vw 0;
+    font-weight: bold;
+    font-size: 1.5em;
+    color: #666;
+}
+
+
+@media screen and (max-width:700px){
+    .currentWeather{
+        width:25%;
+    }
+}
